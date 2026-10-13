@@ -1,7 +1,7 @@
 import allure
 import pytest
 from api.endpoints import PRODUCTS_LIST, BRANDS_LIST, SEARCH_PRODUCT
-from api.exceptions import NotFoundError, ValidationError
+from api.exceptions import NotFoundError
 
 @allure.feature("Products")
 @allure.story("Работа с продуктами и брендами")

@@ -1,12 +1,6 @@
 import allure
 import pytest
-from api.endpoints import (
-    CREATE_ACCOUNT,
-    UPDATE_ACCOUNT,
-    DELETE_ACCOUNT,
-    GET_USER_BY_EMAIL,
-)
-from api.exceptions import APIError, NotFoundError, ValidationError
+from api.endpoints import (CREATE_ACCOUNT, UPDATE_ACCOUNT, DELETE_ACCOUNT, GET_USER_BY_EMAIL,)
 from utils.data_generator import generate_user_data
 
 

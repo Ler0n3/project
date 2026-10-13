@@ -1,7 +1,6 @@
 import allure
 import pytest
 from api.endpoints import VERIFY_LOGIN
-from utils.data_generator import generate_user_data
 
 
 @allure.feature("Login")

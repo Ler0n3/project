@@ -1,4 +1,10 @@
 import pytest
+import allure
+from datetime import datetime
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 from api.base_api import BaseAPI
 from api.endpoints import BASE_URL
 
@@ -29,6 +35,58 @@ def browser_name(request):
 @pytest.fixture(scope="session")
 def ui_base_url(request):
     return request.config.getoption("--ui-base-url")
+
+
+@pytest.fixture
+def browser(request, browser_name):
+    """Фикстура создаёт WebDriver."""
+    if browser_name == "chrome":
+        options = Options()
+        options.add_argument("--start-maximized")
+        options.add_argument("--disable-blink-features=AutomationControlled")
+        options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        options.add_experimental_option("useAutomationExtension", False)
+        prefs = {
+            "credentials_enable_service": False,
+            "profile.password_manager_enabled": False,
+            "profile.password_manager_leak_detection": False,
+        }
+        options.add_experimental_option("prefs", prefs)
+
+        service = Service(ChromeDriverManager().install())
+        driver = webdriver.Chrome(service=service, options=options)
+    elif browser_name == "firefox":
+        driver = webdriver.Firefox()
+    else:
+        raise ValueError(f"Browser '{browser_name}' is not supported")
+
+    driver.implicitly_wait(5)
+
+    request.node.driver = driver
+
+    yield driver
+
+    driver.quit()
+
+
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    """
+    Хук для получения статуса теста.
+    Делает скриншот, если тест упал.
+    """
+    outcome = yield
+    rep = outcome.get_result()
+    setattr(item, "rep_" + rep.when, rep)
+
+    if rep.when == "call" and rep.failed:
+        driver = getattr(item, "driver", None)
+        if driver is not None:
+            allure.attach(
+                driver.get_screenshot_as_png(),
+                name=f"screenshot_{datetime.now().strftime('%H%M%S')}",
+                attachment_type=allure.attachment_type.PNG
+            )
 
 
 @pytest.fixture(scope="session")

@@ -50,7 +50,7 @@ class BaseAPI:
                 last_exception = e
                 logger.warning(f"  Attempt {attempt}/{self.max_retries} failed: {e}")
                 if attempt < self.max_retries:
-                    time.sleep(2)  # пауза перед повтором
+                    time.sleep(2)
             except requests.exceptions.RequestException as e:
                 logger.error(f"  Request error: {url}")
                 raise NetworkError(f"Request error: {url}", e, url)
