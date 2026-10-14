@@ -24,6 +24,10 @@ pipeline {
         timestamps()
     }
 
+    environment {
+        PYTHONIOENCODING = 'UTF-8'
+    }
+
     stages {
         stage('Setup') {
             steps {
