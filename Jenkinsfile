@@ -61,6 +61,7 @@ pipeline {
                     }
                     bat """
                         call venv\\Scripts\\activate.bat
+                        if exist allure-results rmdir /s /q allure-results
                         ${cmd} --junitxml=results.xml --alluredir=allure-results
                     """
                 }
