@@ -39,9 +39,16 @@ class BasePage:
             pass
 
     def click(self, locator):
-        """Кликнуть на элемент (с закрытием попапа при необходимости)."""
+        """Кликнуть на элемент с защитой от попапа."""
         self.dismiss_ad_popup()
         element = self.wait.until(EC.element_to_be_clickable(locator))
+
+        popups = self.driver.find_elements(By.CSS_SELECTOR, ".fc-dialog-overlay")
+        if popups:
+            WebDriverWait(self.driver, 5).until(
+                EC.invisibility_of_element_located((By.CSS_SELECTOR, ".fc-dialog-overlay"))
+            )
+
         element.click()
         return self
 
