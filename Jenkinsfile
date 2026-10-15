@@ -3,19 +3,14 @@ pipeline {
 
     parameters {
         choice(
+            name: 'TEST_SUITE',
+            choices: ['all', 'api', 'ui', 'demo'],
+            description: 'Какой набор тестов запускать'
+        )
+        choice(
             name: 'ENVIRONMENT',
             choices: ['dev', 'stage', 'prod'],
             description: 'Окружение для запуска тестов'
-        )
-        booleanParam(
-            name: 'RUN_SMOKE_ONLY',
-            defaultValue: false,
-            description: 'Только smoke-тесты'
-        )
-        booleanParam(
-            name: 'RUN_DEMO',
-            defaultValue: false,
-            description: 'Запустить демо-тест со скриншотом (намеренно падающий)'
         )
     }
 
@@ -54,26 +49,21 @@ pipeline {
         }
 
         stage('Test') {
-            when {
-                expression { return !params.RUN_DEMO }
-            }
             steps {
-                bat '''
-                    call venv\\Scripts\\activate.bat
-                    pytest tests/ -v --junitxml=results.xml --alluredir=allure-results
-                '''
-            }
-        }
-
-        stage('Demo Test (screenshot)') {
-            when {
-                expression { return params.RUN_DEMO }
-            }
-            steps {
-                bat '''
-                    call venv\\Scripts\\activate.bat
-                    pytest tests/ui_demo/ -v --junitxml=results.xml --alluredir=allure-results
-                '''
+                script {
+                    def cmd = 'pytest tests/ -v -m "api or ui"'
+                    if (params.TEST_SUITE == 'api') {
+                        cmd = 'pytest tests/ -v -m api'
+                    } else if (params.TEST_SUITE == 'ui') {
+                        cmd = 'pytest tests/ -v -m ui'
+                    } else if (params.TEST_SUITE == 'demo') {
+                        cmd = 'pytest tests/ -v -m demo'
+                    }
+                    bat """
+                        call venv\\Scripts\\activate.bat
+                        ${cmd} --junitxml=results.xml --alluredir=allure-results
+                    """
+                }
             }
         }
 
