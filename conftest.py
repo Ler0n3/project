@@ -24,7 +24,7 @@ def pytest_configure(config):
     config.addinivalue_line("markers", "ui: UI tests")
     config.addinivalue_line("markers", "api: API tests")
     config.addinivalue_line("markers", "smoke: Smoke tests")
-    config.addinivalue_line("markers", "regression: Regression tests")
+    config.addinivalue_line("markers", "demo: Demonstration tests (намеренно падающие)")
 
 
 @pytest.fixture(scope="session")

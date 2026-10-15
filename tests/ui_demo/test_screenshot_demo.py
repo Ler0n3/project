@@ -4,7 +4,7 @@ from pages.home_page import HomePage
 
 
 @allure.feature("UI: Screenshot Demo")
-@pytest.mark.ui
+@pytest.mark.demo
 class TestScreenshotDemo:
     """Демонстрация скриншота при падении."""
 

@@ -12,6 +12,11 @@ pipeline {
             defaultValue: false,
             description: 'Только smoke-тесты'
         )
+        booleanParam(
+            name: 'RUN_DEMO',
+            defaultValue: false,
+            description: 'Запустить демо-тест со скриншотом (намеренно падающий)'
+        )
     }
 
     triggers {
@@ -49,10 +54,25 @@ pipeline {
         }
 
         stage('Test') {
+            when {
+                expression { return !params.RUN_DEMO }
+            }
             steps {
                 bat '''
                     call venv\\Scripts\\activate.bat
                     pytest tests/ -v --junitxml=results.xml --alluredir=allure-results
+                '''
+            }
+        }
+
+        stage('Demo Test (screenshot)') {
+            when {
+                expression { return params.RUN_DEMO }
+            }
+            steps {
+                bat '''
+                    call venv\\Scripts\\activate.bat
+                    pytest tests/ui_demo/ -v --junitxml=results.xml --alluredir=allure-results
                 '''
             }
         }
@@ -73,7 +93,7 @@ pipeline {
 
     post {
         always {
-            junit 'results.xml'
+            junit testResults: 'results.xml', allowEmptyResults: true
             allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
             archiveArtifacts artifacts: 'flake8.log, results.xml, allure-results/**', allowEmptyArchive: true
         }
