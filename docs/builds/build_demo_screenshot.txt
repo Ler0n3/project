@@ -1,0 +1,170 @@
+Started by user Гончаренко Валерия Алексеевна
+
+Obtained Jenkinsfile from git https://github.com/Ler0n3/project
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins
+ in C:\Users\Homr\.jenkins\workspace\project_otus
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential github-creds
+ > git.exe rev-parse --resolve-git-dir C:\Users\Homr\.jenkins\workspace\project_otus\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url https://github.com/Ler0n3/project # timeout=10
+Fetching upstream changes from https://github.com/Ler0n3/project
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.45.1.windows.1'
+using GIT_ASKPASS to set credentials GitHub access for OTUS project
+ > git.exe fetch --tags --force --progress -- https://github.com/Ler0n3/project +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/main^{commit}" # timeout=10
+Checking out Revision 5c73d66f673b1d8df92b5c45570775d3bcf4d5e3 (refs/remotes/origin/main)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f 5c73d66f673b1d8df92b5c45570775d3bcf4d5e3 # timeout=10
+Commit message: "Добавлен README.md с описанием проекта и CI""
+ > git.exe rev-list --no-walk 5c73d66f673b1d8df92b5c45570775d3bcf4d5e3 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] timeout
+Timeout set to expire in 1 час 0 минут
+[Pipeline] {
+[Pipeline] timestamps
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Setup)
+[Pipeline] bat
+10:30:57
+10:30:57  C:\Users\Homr\.jenkins\workspace\project_otus>python -m venv venv
+10:31:03
+10:31:03  C:\Users\Homr\.jenkins\workspace\project_otus>call venv\Scripts\activate.bat
+10:31:06  Requirement already satisfied: allure-pytest==2.16.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 1)) (2.16.2)
+10:31:06  Requirement already satisfied: allure-python-commons==2.16.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 2)) (2.16.2)
+10:31:06  Requirement already satisfied: attrs==26.1.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 3)) (26.1.0)
+10:31:06  Requirement already satisfied: certifi==2026.7.22 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 4)) (2026.7.22)
+10:31:06  Requirement already satisfied: cffi==2.1.1 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 5)) (2.1.1)
+10:31:06  Requirement already satisfied: charset-normalizer==3.5.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 6)) (3.5.2)
+10:31:06  Requirement already satisfied: colorama==0.4.6 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 7)) (0.4.6)
+10:31:06  Requirement already satisfied: Faker==40.40.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 8)) (40.40.0)
+10:31:06  Requirement already satisfied: h11==0.16.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 9)) (0.16.0)
+10:31:06  Requirement already satisfied: idna==3.20 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 10)) (3.20)
+10:31:06  Requirement already satisfied: iniconfig==2.3.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 11)) (2.3.0)
+10:31:06  Requirement already satisfied: outcome==1.3.0.post0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 12)) (1.3.0.post0)
+10:31:06  Requirement already satisfied: packaging==26.3 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 13)) (26.3)
+10:31:06  Requirement already satisfied: pluggy==1.6.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 14)) (1.6.0)
+10:31:06  Requirement already satisfied: pycparser==3.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 15)) (3.0)
+10:31:06  Requirement already satisfied: Pygments==2.21.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 16)) (2.21.0)
+10:31:06  Requirement already satisfied: PySocks==1.7.1 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 17)) (1.7.1)
+10:31:06  Requirement already satisfied: pytest==9.1.1 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 18)) (9.1.1)
+10:31:06  Requirement already satisfied: python-dotenv==1.2.4 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 19)) (1.2.4)
+10:31:06  Requirement already satisfied: requests==2.34.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 20)) (2.34.2)
+10:31:06  Requirement already satisfied: selenium==4.50.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 21)) (4.50.0)
+10:31:06  Requirement already satisfied: sniffio==1.3.1 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 22)) (1.3.1)
+10:31:06  Requirement already satisfied: sortedcontainers==2.4.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 23)) (2.4.0)
+10:31:06  Requirement already satisfied: trio==0.34.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 24)) (0.34.0)
+10:31:06  Requirement already satisfied: trio-websocket==0.12.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 25)) (0.12.2)
+10:31:06  Requirement already satisfied: typing_extensions==4.16.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 26)) (4.16.0)
+10:31:06  Requirement already satisfied: tzdata==2026.4 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 27)) (2026.4)
+10:31:06  Requirement already satisfied: urllib3==2.8.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 28)) (2.8.0)
+10:31:06  Requirement already satisfied: webdriver-manager==4.1.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 29)) (4.1.2)
+10:31:06  Requirement already satisfied: websocket-client==1.9.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 30)) (1.9.2)
+10:31:06  Requirement already satisfied: wsproto==1.3.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 31)) (1.3.2)
+10:31:06  Requirement already satisfied: flake8 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 32)) (7.4.1)
+10:31:06  Requirement already satisfied: mccabe<0.8.0,>=0.7.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from flake8->-r requirements.txt (line 32)) (0.7.0)
+10:31:06  Requirement already satisfied: pycodestyle<2.16.0,>=2.15.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from flake8->-r requirements.txt (line 32)) (2.15.0)
+10:31:06  Requirement already satisfied: pyflakes<4.1.0,>=4.0.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from flake8->-r requirements.txt (line 32)) (4.0.3)
+10:31:06
+10:31:06  [notice] A new release of pip is available: 25.2 -> 26.2.1
+10:31:06  [notice] To update, run: python.exe -m pip install --upgrade pip
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Lint)
+[Pipeline] bat
+10:31:07
+10:31:07  C:\Users\Homr\.jenkins\workspace\project_otus>call venv\Scripts\activate.bat
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] bat
+10:31:10
+10:31:10  C:\Users\Homr\.jenkins\workspace\project_otus>call venv\Scripts\activate.bat
+10:31:13  ============================= test session starts =============================
+10:31:13  platform win32 -- Python 3.13.7, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\Homr\.jenkins\workspace\project_otus\venv\Scripts\python.exe
+10:31:13  cachedir: .pytest_cache
+10:31:13  rootdir: C:\Users\Homr\.jenkins\workspace\project_otus
+10:31:13  configfile: pytest.ini
+10:31:13  plugins: allure-pytest-2.16.2, Faker-40.40.0
+10:31:13  collecting ... collected 44 items / 43 deselected / 1 selected
+10:31:13
+10:31:13  tests/ui_demo/test_screenshot_demo.py::TestScreenshotDemo::test_screenshot_on_failure
+10:31:13  ------------------------------- live log setup --------------------------------
+10:31:13  10:31:13 [INFO] WDM: ====== WebDriver manager ======
+10:31:15  10:31:15 [INFO] WDM: Driver [C:\Users\Homr\.wdm\drivers\chromedriver\win64\155.0.8059.84\chromedriver-win64/chromedriver.exe] found in cache by browser version
+10:31:29  FAILED                                                                   [100%]
+10:31:29
+10:31:29  ================================== FAILURES ===================================
+10:31:29  ________________ TestScreenshotDemo.test_screenshot_on_failure ________________
+10:31:29  tests\ui_demo\test_screenshot_demo.py:18: in test_screenshot_on_failure
+10:31:29      assert False, "Тест упал специально для демонстрации скриншота"
+10:31:29  E   AssertionError: Тест упал специально для демонстрации скриншота
+10:31:29  E   assert False
+10:31:29  ----------------------------- Captured log setup ------------------------------
+10:31:29  INFO     WDM:logger.py:11 ====== WebDriver manager ======
+10:31:29  INFO     WDM:logger.py:11 Driver [C:\Users\Homr\.wdm\drivers\chromedriver\win64\155.0.8059.84\chromedriver-win64/chromedriver.exe] found in cache by browser version
+10:31:29  - generated xml file: C:\Users\Homr\.jenkins\workspace\project_otus\results.xml -
+10:31:29  =========================== short test summary info ===========================
+10:31:29  FAILED tests/ui_demo/test_screenshot_demo.py::TestScreenshotDemo::test_screenshot_on_failure - AssertionError: Тест упал специально для демонстрации скриншота
+10:31:29  assert False
+10:31:29  ====================== 1 failed, 43 deselected in 15.92s ======================
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy)
+Stage "Deploy" skipped due to earlier failure(s)
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] junit
+10:31:31  Recording test results
+10:31:31  [Checks API] No suitable checks publisher found.
+[Pipeline] allure
+10:31:31  [Allure] No installation selected, using the only available: allure
+10:31:31  [Allure] Using cached Allure 3.16.0 with Node.js 24.14.1 at C:\Users\Homr\.jenkins\tools\org.allurereport.jenkins.tools.AllureCommandlineInstallation\allure\releases\allure-3.16.0-node-24.14.1-runtime-1
+10:31:31  Using Allure CLI 3.16.0 from installation 'allure'
+10:31:31  Cleaning existing Allure report directory: C:\Users\Homr\.jenkins\workspace\project_otus\allure-report
+10:31:31  Using Allure CLI: C:\Users\Homr\.jenkins\tools\org.allurereport.jenkins.tools.AllureCommandlineInstallation\allure\releases\allure-3.16.0-node-24.14.1-runtime-1\node-v24.14.1-win-x64\node.exe C:\Users\Homr\.jenkins\tools\org.allurereport.jenkins.tools.AllureCommandlineInstallation\allure\releases\allure-3.16.0-node-24.14.1-runtime-1\allure\node_modules\allure\cli.js
+10:31:31  [project_otus] $ C:\Users\Homr\.jenkins\tools\org.allurereport.jenkins.tools.AllureCommandlineInstallation\allure\releases\allure-3.16.0-node-24.14.1-runtime-1\node-v24.14.1-win-x64\node.exe C:\Users\Homr\.jenkins\tools\org.allurereport.jenkins.tools.AllureCommandlineInstallation\allure\releases\allure-3.16.0-node-24.14.1-runtime-1\allure\node_modules\allure\cli.js generate C:\Users\Homr\.jenkins\workspace\project_otus\allure-results -o C:\Users\Homr\.jenkins\workspace\project_otus\allure-report
+10:31:34  Allure report was successfully generated.
+10:31:37  Archiving Allure report via ArtifactManager…
+10:31:37  Allure artifact archived via ArtifactManager.
+[Pipeline] archiveArtifacts
+10:31:37  Archiving artifacts
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // timestamps
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 1
+Finished: FAILURE

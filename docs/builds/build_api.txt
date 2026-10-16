@@ -1,0 +1,410 @@
+Started by user Гончаренко Валерия Алексеевна
+
+Obtained Jenkinsfile from git https://github.com/Ler0n3/project
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins
+ in C:\Users\Homr\.jenkins\workspace\project_otus
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential github-creds
+ > git.exe rev-parse --resolve-git-dir C:\Users\Homr\.jenkins\workspace\project_otus\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url https://github.com/Ler0n3/project # timeout=10
+Fetching upstream changes from https://github.com/Ler0n3/project
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.45.1.windows.1'
+using GIT_ASKPASS to set credentials GitHub access for OTUS project
+ > git.exe fetch --tags --force --progress -- https://github.com/Ler0n3/project +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/main^{commit}" # timeout=10
+Checking out Revision 5c73d66f673b1d8df92b5c45570775d3bcf4d5e3 (refs/remotes/origin/main)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f 5c73d66f673b1d8df92b5c45570775d3bcf4d5e3 # timeout=10
+Commit message: "Добавлен README.md с описанием проекта и CI""
+ > git.exe rev-list --no-walk 5c73d66f673b1d8df92b5c45570775d3bcf4d5e3 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] timeout
+Timeout set to expire in 1 час 0 минут
+[Pipeline] {
+[Pipeline] timestamps
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Setup)
+[Pipeline] bat
+10:14:17
+10:14:17  C:\Users\Homr\.jenkins\workspace\project_otus>python -m venv venv
+10:14:23
+10:14:23  C:\Users\Homr\.jenkins\workspace\project_otus>call venv\Scripts\activate.bat
+10:14:25  Requirement already satisfied: allure-pytest==2.16.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 1)) (2.16.2)
+10:14:25  Requirement already satisfied: allure-python-commons==2.16.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 2)) (2.16.2)
+10:14:25  Requirement already satisfied: attrs==26.1.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 3)) (26.1.0)
+10:14:25  Requirement already satisfied: certifi==2026.7.22 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 4)) (2026.7.22)
+10:14:25  Requirement already satisfied: cffi==2.1.1 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 5)) (2.1.1)
+10:14:25  Requirement already satisfied: charset-normalizer==3.5.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 6)) (3.5.2)
+10:14:25  Requirement already satisfied: colorama==0.4.6 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 7)) (0.4.6)
+10:14:25  Requirement already satisfied: Faker==40.40.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 8)) (40.40.0)
+10:14:25  Requirement already satisfied: h11==0.16.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 9)) (0.16.0)
+10:14:25  Requirement already satisfied: idna==3.20 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 10)) (3.20)
+10:14:25  Requirement already satisfied: iniconfig==2.3.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 11)) (2.3.0)
+10:14:25  Requirement already satisfied: outcome==1.3.0.post0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 12)) (1.3.0.post0)
+10:14:25  Requirement already satisfied: packaging==26.3 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 13)) (26.3)
+10:14:25  Requirement already satisfied: pluggy==1.6.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 14)) (1.6.0)
+10:14:25  Requirement already satisfied: pycparser==3.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 15)) (3.0)
+10:14:25  Requirement already satisfied: Pygments==2.21.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 16)) (2.21.0)
+10:14:25  Requirement already satisfied: PySocks==1.7.1 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 17)) (1.7.1)
+10:14:25  Requirement already satisfied: pytest==9.1.1 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 18)) (9.1.1)
+10:14:25  Requirement already satisfied: python-dotenv==1.2.4 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 19)) (1.2.4)
+10:14:25  Requirement already satisfied: requests==2.34.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 20)) (2.34.2)
+10:14:25  Requirement already satisfied: selenium==4.50.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 21)) (4.50.0)
+10:14:25  Requirement already satisfied: sniffio==1.3.1 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 22)) (1.3.1)
+10:14:25  Requirement already satisfied: sortedcontainers==2.4.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 23)) (2.4.0)
+10:14:25  Requirement already satisfied: trio==0.34.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 24)) (0.34.0)
+10:14:25  Requirement already satisfied: trio-websocket==0.12.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 25)) (0.12.2)
+10:14:25  Requirement already satisfied: typing_extensions==4.16.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 26)) (4.16.0)
+10:14:25  Requirement already satisfied: tzdata==2026.4 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 27)) (2026.4)
+10:14:25  Requirement already satisfied: urllib3==2.8.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 28)) (2.8.0)
+10:14:25  Requirement already satisfied: webdriver-manager==4.1.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 29)) (4.1.2)
+10:14:25  Requirement already satisfied: websocket-client==1.9.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 30)) (1.9.2)
+10:14:25  Requirement already satisfied: wsproto==1.3.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 31)) (1.3.2)
+10:14:25  Requirement already satisfied: flake8 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 32)) (7.4.1)
+10:14:25  Requirement already satisfied: mccabe<0.8.0,>=0.7.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from flake8->-r requirements.txt (line 32)) (0.7.0)
+10:14:25  Requirement already satisfied: pycodestyle<2.16.0,>=2.15.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from flake8->-r requirements.txt (line 32)) (2.15.0)
+10:14:25  Requirement already satisfied: pyflakes<4.1.0,>=4.0.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from flake8->-r requirements.txt (line 32)) (4.0.3)
+10:14:25
+10:14:25  [notice] A new release of pip is available: 25.2 -> 26.2.1
+10:14:25  [notice] To update, run: python.exe -m pip install --upgrade pip
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Lint)
+[Pipeline] bat
+10:14:26
+10:14:26  C:\Users\Homr\.jenkins\workspace\project_otus>call venv\Scripts\activate.bat
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] bat
+10:14:29
+10:14:29  C:\Users\Homr\.jenkins\workspace\project_otus>call venv\Scripts\activate.bat
+10:14:31  ============================= test session starts =============================
+10:14:31  platform win32 -- Python 3.13.7, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\Homr\.jenkins\workspace\project_otus\venv\Scripts\python.exe
+10:14:31  cachedir: .pytest_cache
+10:14:31  rootdir: C:\Users\Homr\.jenkins\workspace\project_otus
+10:14:31  configfile: pytest.ini
+10:14:31  plugins: allure-pytest-2.16.2, Faker-40.40.0
+10:14:32  collecting ... collected 44 items / 16 deselected / 28 selected
+10:14:32
+10:14:32  tests/api/test_login.py::TestVerifyLogin::test_verify_login_valid
+10:14:32  ------------------------------- live log setup --------------------------------
+10:14:32  10:14:32 [INFO] api.base_api: [POST] https://automationexercise.com/api/createAccount
+10:14:32  10:14:32 [INFO] api.base_api:   Data: {'name': 'Jacqueline', 'email': 'test_1792134872161_4685@example.com', 'password': 'zbh&gVt7#79R', 'title': 'Mrs', 'birth_date': '13', 'birth_month': '10', 'birth_year': '1980', 'firstname': 'Kristina', 'lastname': 'Smith', 'company': 'Palmer-Patterson', 'address1': '3756 Russell Island', 'address2': 'Suite 012', 'country': 'India', 'zipcode': '24921', 'state': 'Pennsylvania', 'city': 'South Thomas', 'mobile_number': '6805827992'}
+10:14:33  10:14:33 [INFO] api.base_api:   Response: 200
+10:14:33  -------------------------------- live log call --------------------------------
+10:14:33  10:14:33 [INFO] api.base_api: [POST] https://automationexercise.com/api/verifyLogin
+10:14:33  10:14:33 [INFO] api.base_api:   Data: {'email': 'test_1792134872161_4685@example.com', 'password': 'zbh&gVt7#79R'}
+10:14:33  10:14:33 [INFO] api.base_api:   Response: 200
+10:14:33  PASSED                                                                   [  3%]
+10:14:33  ------------------------------ live log teardown ------------------------------
+10:14:33  10:14:33 [INFO] api.base_api: [DELETE] https://automationexercise.com/api/deleteAccount
+10:14:33  10:14:33 [INFO] api.base_api:   Data: {'email': 'test_1792134872161_4685@example.com', 'password': 'zbh&gVt7#79R'}
+10:14:34  10:14:33 [INFO] api.base_api:   Response: 200
+10:14:34
+10:14:34  tests/api/test_login.py::TestVerifyLogin::test_verify_login_wrong_password
+10:14:34  ------------------------------- live log setup --------------------------------
+10:14:34  10:14:33 [INFO] api.base_api: [POST] https://automationexercise.com/api/createAccount
+10:14:34  10:14:33 [INFO] api.base_api:   Data: {'name': 'Brian', 'email': 'test_1792134873978_8029@example.com', 'password': 'T$&s5Avx7Wh2', 'title': 'Mr', 'birth_date': '15', 'birth_month': '12', 'birth_year': '1992', 'firstname': 'Theresa', 'lastname': 'Cox', 'company': 'Trevino-Snyder', 'address1': '25678 Jones Forks Suite 574', 'address2': 'Suite 846', 'country': 'India', 'zipcode': '56820', 'state': 'Oklahoma', 'city': 'New Josephborough', 'mobile_number': '315.230.5891x4064'}
+10:14:34  10:14:34 [INFO] api.base_api:   Response: 200
+10:14:34  -------------------------------- live log call --------------------------------
+10:14:34  10:14:34 [INFO] api.base_api: [POST] https://automationexercise.com/api/verifyLogin
+10:14:34  10:14:34 [INFO] api.base_api:   Data: {'email': 'test_1792134873978_8029@example.com', 'password': 'wrong_password_12345'}
+10:14:34  10:14:34 [INFO] api.base_api:   Response: 200
+10:14:34  PASSED                                                                   [  7%]
+10:14:34  ------------------------------ live log teardown ------------------------------
+10:14:34  10:14:34 [INFO] api.base_api: [DELETE] https://automationexercise.com/api/deleteAccount
+10:14:34  10:14:34 [INFO] api.base_api:   Data: {'email': 'test_1792134873978_8029@example.com', 'password': 'T$&s5Avx7Wh2'}
+10:14:34  10:14:34 [INFO] api.base_api:   Response: 200
+10:14:34
+10:14:34  tests/api/test_login.py::TestVerifyLogin::test_verify_login_wrong_email
+10:14:34  -------------------------------- live log call --------------------------------
+10:14:34  10:14:34 [INFO] api.base_api: [POST] https://automationexercise.com/api/verifyLogin
+10:14:34  10:14:34 [INFO] api.base_api:   Data: {'email': 'nonexistent_user_99999@example.com', 'password': 'some_password'}
+10:14:35  10:14:34 [INFO] api.base_api:   Response: 200
+10:14:35  PASSED                                                                   [ 10%]
+10:14:35  tests/api/test_login.py::TestVerifyLogin::test_verify_login_missing_field[email]
+10:14:35  ------------------------------- live log setup --------------------------------
+10:14:35  10:14:34 [INFO] api.base_api: [POST] https://automationexercise.com/api/createAccount
+10:14:35  10:14:34 [INFO] api.base_api:   Data: {'name': 'Timothy', 'email': 'test_1792134874977_6797@example.com', 'password': 'd15rYg4O*kpv', 'title': 'Mr', 'birth_date': '23', 'birth_month': '10', 'birth_year': '1989', 'firstname': 'Ryan', 'lastname': 'Perry', 'company': 'Lopez, Ramirez and Travis', 'address1': '9368 Guerra Shore', 'address2': 'Suite 773', 'country': 'India', 'zipcode': '15081', 'state': 'Delaware', 'city': 'New Brandiview', 'mobile_number': '235-548-2996x20842'}
+10:14:35  10:14:35 [INFO] api.base_api:   Response: 200
+10:14:35  -------------------------------- live log call --------------------------------
+10:14:35  10:14:35 [INFO] api.base_api: [POST] https://automationexercise.com/api/verifyLogin
+10:14:35  10:14:35 [INFO] api.base_api:   Data: {'password': 'd15rYg4O*kpv'}
+10:14:35  10:14:35 [INFO] api.base_api:   Response: 200
+10:14:35  PASSED                                                                   [ 14%]
+10:14:35  ------------------------------ live log teardown ------------------------------
+10:14:35  10:14:35 [INFO] api.base_api: [DELETE] https://automationexercise.com/api/deleteAccount
+10:14:35  10:14:35 [INFO] api.base_api:   Data: {'email': 'test_1792134874977_6797@example.com', 'password': 'd15rYg4O*kpv'}
+10:14:35  10:14:35 [INFO] api.base_api:   Response: 200
+10:14:35
+10:14:35  tests/api/test_login.py::TestVerifyLogin::test_verify_login_missing_field[password]
+10:14:35  ------------------------------- live log setup --------------------------------
+10:14:35  10:14:35 [INFO] api.base_api: [POST] https://automationexercise.com/api/createAccount
+10:14:35  10:14:35 [INFO] api.base_api:   Data: {'name': 'Diamond', 'email': 'test_1792134875740_3987@example.com', 'password': 'fCX0SJfW_6$A', 'title': 'Mr', 'birth_date': '15', 'birth_month': '9', 'birth_year': '1991', 'firstname': 'Cory', 'lastname': 'Mccarthy', 'company': 'Ellis PLC', 'address1': '1876 Martinez Orchard Apt. 177', 'address2': 'Apt. 457', 'country': 'India', 'zipcode': '53756', 'state': 'Indiana', 'city': 'North Edwardtown', 'mobile_number': '639-341-9624x40466'}
+10:14:36  10:14:35 [INFO] api.base_api:   Response: 200
+10:14:36  -------------------------------- live log call --------------------------------
+10:14:36  10:14:36 [INFO] api.base_api: [POST] https://automationexercise.com/api/verifyLogin
+10:14:36  10:14:36 [INFO] api.base_api:   Data: {'email': 'test_1792134875740_3987@example.com'}
+10:14:36  10:14:36 [INFO] api.base_api:   Response: 200
+10:14:36  PASSED                                                                   [ 17%]
+10:14:36  ------------------------------ live log teardown ------------------------------
+10:14:36  10:14:36 [INFO] api.base_api: [DELETE] https://automationexercise.com/api/deleteAccount
+10:14:36  10:14:36 [INFO] api.base_api:   Data: {'email': 'test_1792134875740_3987@example.com', 'password': 'fCX0SJfW_6$A'}
+10:14:36  10:14:36 [INFO] api.base_api:   Response: 200
+10:14:36
+10:14:36  tests/api/test_login.py::TestVerifyLogin::test_verify_login_empty_credentials
+10:14:36  -------------------------------- live log call --------------------------------
+10:14:36  10:14:36 [INFO] api.base_api: [POST] https://automationexercise.com/api/verifyLogin
+10:14:36  10:14:36 [INFO] api.base_api:   Data: {'email': '', 'password': ''}
+10:14:36  10:14:36 [INFO] api.base_api:   Response: 200
+10:14:36  PASSED                                                                   [ 21%]
+10:14:36  tests/api/test_login.py::TestVerifyLogin::test_verify_login_wrong_method
+10:14:36  -------------------------------- live log call --------------------------------
+10:14:36  10:14:36 [INFO] api.base_api: [GET] https://automationexercise.com/api/verifyLogin
+10:14:37  10:14:36 [INFO] api.base_api:   Response: 200
+10:14:37  PASSED                                                                   [ 25%]
+10:14:37  tests/api/test_products.py::TestProducts::test_get_products_list
+10:14:37  -------------------------------- live log call --------------------------------
+10:14:37  10:14:36 [INFO] api.base_api: [GET] https://automationexercise.com/api/productsList
+10:14:37  10:14:37 [INFO] api.base_api:   Response: 200
+10:14:37  PASSED                                                                   [ 28%]
+10:14:37  tests/api/test_products.py::TestProducts::test_get_brands_list
+10:14:37  -------------------------------- live log call --------------------------------
+10:14:37  10:14:37 [INFO] api.base_api: [GET] https://automationexercise.com/api/brandsList
+10:14:37  10:14:37 [INFO] api.base_api:   Response: 200
+10:14:37  PASSED                                                                   [ 32%]
+10:14:37  tests/api/test_products.py::TestProducts::test_search_product_valid
+10:14:37  -------------------------------- live log call --------------------------------
+10:14:37  10:14:37 [INFO] api.base_api: [POST] https://automationexercise.com/api/searchProduct
+10:14:37  10:14:37 [INFO] api.base_api:   Data: {'search_product': 'top'}
+10:14:37  10:14:37 [INFO] api.base_api:   Response: 200
+10:14:37  PASSED                                                                   [ 35%]
+10:14:37  tests/api/test_products.py::TestProducts::test_search_product_without_param
+10:14:37  -------------------------------- live log call --------------------------------
+10:14:37  10:14:37 [INFO] api.base_api: [POST] https://automationexercise.com/api/searchProduct
+10:14:38  10:14:38 [INFO] api.base_api:   Response: 200
+10:14:38  PASSED                                                                   [ 39%]
+10:14:38  tests/api/test_products.py::TestProducts::TestNetworkErrors::test_nonexistent_endpoint
+10:14:38  -------------------------------- live log call --------------------------------
+10:14:38  10:14:38 [INFO] api.base_api: [GET] https://automationexercise.com/api/nonexistent-endpoint
+10:14:38  10:14:38 [INFO] api.base_api:   Response: 404
+10:14:38  PASSED                                                                   [ 42%]
+10:14:38  tests/api/test_users.py::TestCreateAccount::test_create_account_valid
+10:14:38  -------------------------------- live log call --------------------------------
+10:14:38  10:14:38 [INFO] api.base_api: [POST] https://automationexercise.com/api/createAccount
+10:14:38  10:14:38 [INFO] api.base_api:   Data: {'name': 'Veronica', 'email': 'test_1792134878321_6587@example.com', 'password': 'qF9un*12y*C$', 'title': 'Mr', 'birth_date': '9', 'birth_month': '4', 'birth_year': '1983', 'firstname': 'Deborah', 'lastname': 'Wilkins', 'company': 'Walker and Sons', 'address1': '8315 Brady Points', 'address2': 'Apt. 866', 'country': 'India', 'zipcode': '28446', 'state': 'Oklahoma', 'city': 'Melissaland', 'mobile_number': '(470)990-3553x36746'}
+10:14:38  10:14:38 [INFO] api.base_api:   Response: 200
+10:14:38  10:14:38 [INFO] api.base_api: [GET] https://automationexercise.com/api/getUserDetailByEmail
+10:14:38  10:14:38 [INFO] api.base_api:   Params: {'email': 'test_1792134878321_6587@example.com'}
+10:14:38  10:14:38 [INFO] api.base_api:   Response: 200
+10:14:38  10:14:38 [INFO] api.base_api: [DELETE] https://automationexercise.com/api/deleteAccount
+10:14:38  10:14:38 [INFO] api.base_api:   Data: {'email': 'test_1792134878321_6587@example.com', 'password': 'qF9un*12y*C$'}
+10:14:39  10:14:39 [INFO] api.base_api:   Response: 200
+10:14:39  PASSED                                                                   [ 46%]
+10:14:39  tests/api/test_users.py::TestCreateAccount::test_create_account_missing_field[email]
+10:14:39  -------------------------------- live log call --------------------------------
+10:14:39  10:14:39 [INFO] api.base_api: [POST] https://automationexercise.com/api/createAccount
+10:14:39  10:14:39 [INFO] api.base_api:   Data: {'name': 'Larry', 'password': 'IQO)aZZX$8Ec', 'title': 'Mr', 'birth_date': '4', 'birth_month': '9', 'birth_year': '1982', 'firstname': 'Tamara', 'lastname': 'Smith', 'company': 'Watson-Le', 'address1': '1029 William Spring Suite 035', 'address2': 'Suite 235', 'country': 'India', 'zipcode': '91740', 'state': 'Ohio', 'city': 'East Crystalshire', 'mobile_number': '+1-325-565-7367'}
+10:14:39  10:14:39 [INFO] api.base_api:   Response: 200
+10:14:39  PASSED                                                                   [ 50%]
+10:14:39  tests/api/test_users.py::TestCreateAccount::test_create_account_missing_field[password]
+10:14:39  -------------------------------- live log call --------------------------------
+10:14:39  10:14:39 [INFO] api.base_api: [POST] https://automationexercise.com/api/createAccount
+10:14:39  10:14:39 [INFO] api.base_api:   Data: {'name': 'Samantha', 'email': 'test_1792134879340_1226@example.com', 'title': 'Mr', 'birth_date': '1', 'birth_month': '5', 'birth_year': '1987', 'firstname': 'Justin', 'lastname': 'Duran', 'company': 'Cooper, Norton and Winters', 'address1': '521 Myers Mission', 'address2': 'Apt. 513', 'country': 'India', 'zipcode': '29350', 'state': 'Tennessee', 'city': 'Crawfordshire', 'mobile_number': '001-403-786-3026x3471'}
+10:14:39  10:14:39 [INFO] api.base_api:   Response: 200
+10:14:39  PASSED                                                                   [ 53%]
+10:14:39  tests/api/test_users.py::TestCreateAccount::test_create_account_missing_field[name]
+10:14:39  -------------------------------- live log call --------------------------------
+10:14:39  10:14:39 [INFO] api.base_api: [POST] https://automationexercise.com/api/createAccount
+10:14:39  10:14:39 [INFO] api.base_api:   Data: {'email': 'test_1792134879593_9939@example.com', 'password': '@&2ptd@^tz7C', 'title': 'Mr', 'birth_date': '25', 'birth_month': '9', 'birth_year': '1989', 'firstname': 'Cassandra', 'lastname': 'Rogers', 'company': 'Pierce, Hunter and Mullins', 'address1': '865 Carolyn Overpass Suite 768', 'address2': 'Apt. 930', 'country': 'India', 'zipcode': '47049', 'state': 'Oklahoma', 'city': 'Vasquezchester', 'mobile_number': '+1-425-655-4330x6719'}
+10:14:39  10:14:39 [INFO] api.base_api:   Response: 200
+10:14:39  PASSED                                                                   [ 57%]
+10:14:39  tests/api/test_users.py::TestCreateAccount::test_create_account_duplicate_email
+10:14:39  ------------------------------- live log setup --------------------------------
+10:14:39  10:14:39 [INFO] api.base_api: [POST] https://automationexercise.com/api/createAccount
+10:14:39  10:14:39 [INFO] api.base_api:   Data: {'name': 'Gabriel', 'email': 'test_1792134879842_4236@example.com', 'password': '0gXbxlgg#hGt', 'title': 'Mr', 'birth_date': '19', 'birth_month': '5', 'birth_year': '1999', 'firstname': 'Tammy', 'lastname': 'Jones', 'company': 'Webb-Sanders', 'address1': '20141 Cantrell Bridge', 'address2': 'Apt. 136', 'country': 'India', 'zipcode': '74535', 'state': 'Indiana', 'city': 'Washingtonport', 'mobile_number': '001-697-873-5288'}
+10:14:40  10:14:40 [INFO] api.base_api:   Response: 200
+10:14:40  -------------------------------- live log call --------------------------------
+10:14:40  10:14:40 [INFO] api.base_api: [POST] https://automationexercise.com/api/createAccount
+10:14:40  10:14:40 [INFO] api.base_api:   Data: {'name': 'Joseph', 'email': 'test_1792134879842_4236@example.com', 'password': 'fE8VJDqs(m#0', 'title': 'Mrs', 'birth_date': '2', 'birth_month': '4', 'birth_year': '1996', 'firstname': 'Kimberly', 'lastname': 'Green', 'company': 'Johnson-Rodriguez', 'address1': '033 Carmen Walks', 'address2': 'Suite 290', 'country': 'India', 'zipcode': '28683', 'state': 'Kansas', 'city': 'East Amber', 'mobile_number': '(328)700-7550x2750'}
+10:14:40  10:14:40 [INFO] api.base_api:   Response: 200
+10:14:40  PASSED                                                                   [ 60%]
+10:14:40  ------------------------------ live log teardown ------------------------------
+10:14:40  10:14:40 [INFO] api.base_api: [DELETE] https://automationexercise.com/api/deleteAccount
+10:14:40  10:14:40 [INFO] api.base_api:   Data: {'email': 'test_1792134879842_4236@example.com', 'password': '0gXbxlgg#hGt'}
+10:14:40  10:14:40 [INFO] api.base_api:   Response: 200
+10:14:40
+10:14:40  tests/api/test_users.py::TestUpdateAccount::test_update_account_valid
+10:14:40  ------------------------------- live log setup --------------------------------
+10:14:40  10:14:40 [INFO] api.base_api: [POST] https://automationexercise.com/api/createAccount
+10:14:40  10:14:40 [INFO] api.base_api:   Data: {'name': 'Rhonda', 'email': 'test_1792134880608_8923@example.com', 'password': '2*F09WNh@Yc!', 'title': 'Mr', 'birth_date': '11', 'birth_month': '5', 'birth_year': '1987', 'firstname': 'Jeffrey', 'lastname': 'Cooper', 'company': 'Calderon, Barnes and Bryant', 'address1': '9727 Price Summit', 'address2': 'Apt. 791', 'country': 'India', 'zipcode': '59892', 'state': 'Vermont', 'city': 'Toddside', 'mobile_number': '(384)857-2099'}
+10:14:41  10:14:40 [INFO] api.base_api:   Response: 200
+10:14:41  -------------------------------- live log call --------------------------------
+10:14:41  10:14:40 [INFO] api.base_api: [PUT] https://automationexercise.com/api/updateAccount
+10:14:41  10:14:40 [INFO] api.base_api:   Data: {'name': 'UpdatedName', 'email': 'test_1792134880608_8923@example.com', 'password': '2*F09WNh@Yc!', 'title': 'Mr', 'birth_date': '11', 'birth_month': '5', 'birth_year': '1987', 'firstname': 'UpdatedFirst', 'lastname': 'UpdatedLast', 'company': 'Calderon, Barnes and Bryant', 'address1': '9727 Price Summit', 'address2': 'Apt. 791', 'country': 'India', 'zipcode': '59892', 'state': 'Vermont', 'city': 'Toddside', 'mobile_number': '(384)857-2099'}
+10:14:41  10:14:41 [INFO] api.base_api:   Response: 200
+10:14:41  10:14:41 [INFO] api.base_api: [GET] https://automationexercise.com/api/getUserDetailByEmail
+10:14:41  10:14:41 [INFO] api.base_api:   Params: {'email': 'test_1792134880608_8923@example.com'}
+10:14:41  10:14:41 [INFO] api.base_api:   Response: 200
+10:14:41  PASSED                                                                   [ 64%]
+10:14:41  ------------------------------ live log teardown ------------------------------
+10:14:41  10:14:41 [INFO] api.base_api: [DELETE] https://automationexercise.com/api/deleteAccount
+10:14:41  10:14:41 [INFO] api.base_api:   Data: {'email': 'test_1792134880608_8923@example.com', 'password': '2*F09WNh@Yc!'}
+10:14:41  10:14:41 [INFO] api.base_api:   Response: 200
+10:14:41
+10:14:41  tests/api/test_users.py::TestUpdateAccount::test_update_account_missing_field[email]
+10:14:41  ------------------------------- live log setup --------------------------------
+10:14:41  10:14:41 [INFO] api.base_api: [POST] https://automationexercise.com/api/createAccount
+10:14:41  10:14:41 [INFO] api.base_api:   Data: {'name': 'Marisa', 'email': 'test_1792134881632_4919@example.com', 'password': '8#p09fSxNFl%', 'title': 'Mrs', 'birth_date': '21', 'birth_month': '3', 'birth_year': '1999', 'firstname': 'Jamie', 'lastname': 'Henry', 'company': 'Farrell, Hendrix and Miller', 'address1': '9481 Smith Harbors', 'address2': 'Apt. 431', 'country': 'India', 'zipcode': '73595', 'state': 'Oregon', 'city': 'New Rebeccaburgh', 'mobile_number': '+1-451-351-8003'}
+10:14:42  10:14:41 [INFO] api.base_api:   Response: 200
+10:14:42  -------------------------------- live log call --------------------------------
+10:14:42  10:14:41 [INFO] api.base_api: [PUT] https://automationexercise.com/api/updateAccount
+10:14:42  10:14:41 [INFO] api.base_api:   Data: {'name': 'Marisa', 'password': '8#p09fSxNFl%', 'title': 'Mrs', 'birth_date': '21', 'birth_month': '3', 'birth_year': '1999', 'firstname': 'Jamie', 'lastname': 'Henry', 'company': 'Farrell, Hendrix and Miller', 'address1': '9481 Smith Harbors', 'address2': 'Apt. 431', 'country': 'India', 'zipcode': '73595', 'state': 'Oregon', 'city': 'New Rebeccaburgh', 'mobile_number': '+1-451-351-8003'}
+10:14:42  10:14:42 [INFO] api.base_api:   Response: 200
+10:14:42  PASSED                                                                   [ 67%]
+10:14:42  ------------------------------ live log teardown ------------------------------
+10:14:42  10:14:42 [INFO] api.base_api: [DELETE] https://automationexercise.com/api/deleteAccount
+10:14:42  10:14:42 [INFO] api.base_api:   Data: {'email': 'test_1792134881632_4919@example.com', 'password': '8#p09fSxNFl%'}
+10:14:42  10:14:42 [INFO] api.base_api:   Response: 200
+10:14:42
+10:14:42  tests/api/test_users.py::TestUpdateAccount::test_update_account_missing_field[password]
+10:14:42  ------------------------------- live log setup --------------------------------
+10:14:42  10:14:42 [INFO] api.base_api: [POST] https://automationexercise.com/api/createAccount
+10:14:42  10:14:42 [INFO] api.base_api:   Data: {'name': 'Dawn', 'email': 'test_1792134882425_6342@example.com', 'password': 'p0$m%EOBb^JQ', 'title': 'Mr', 'birth_date': '14', 'birth_month': '7', 'birth_year': '1991', 'firstname': 'Gina', 'lastname': 'Farmer', 'company': 'Olson-Nelson', 'address1': '2837 Blanchard Drive Suite 656', 'address2': 'Apt. 314', 'country': 'India', 'zipcode': '65913', 'state': 'West Virginia', 'city': 'Caitlinberg', 'mobile_number': '424-362-3625x843'}
+10:14:42  10:14:42 [INFO] api.base_api:   Response: 200
+10:14:42  -------------------------------- live log call --------------------------------
+10:14:42  10:14:42 [INFO] api.base_api: [PUT] https://automationexercise.com/api/updateAccount
+10:14:42  10:14:42 [INFO] api.base_api:   Data: {'name': 'Dawn', 'email': 'test_1792134882425_6342@example.com', 'title': 'Mr', 'birth_date': '14', 'birth_month': '7', 'birth_year': '1991', 'firstname': 'Gina', 'lastname': 'Farmer', 'company': 'Olson-Nelson', 'address1': '2837 Blanchard Drive Suite 656', 'address2': 'Apt. 314', 'country': 'India', 'zipcode': '65913', 'state': 'West Virginia', 'city': 'Caitlinberg', 'mobile_number': '424-362-3625x843'}
+10:14:43  10:14:42 [INFO] api.base_api:   Response: 200
+10:14:43  PASSED                                                                   [ 71%]
+10:14:43  ------------------------------ live log teardown ------------------------------
+10:14:43  10:14:42 [INFO] api.base_api: [DELETE] https://automationexercise.com/api/deleteAccount
+10:14:43  10:14:42 [INFO] api.base_api:   Data: {'email': 'test_1792134882425_6342@example.com', 'password': 'p0$m%EOBb^JQ'}
+10:14:43  10:14:43 [INFO] api.base_api:   Response: 200
+10:14:43
+10:14:43  tests/api/test_users.py::TestUpdateAccount::test_update_account_nonexistent
+10:14:43  -------------------------------- live log call --------------------------------
+10:14:43  10:14:43 [INFO] api.base_api: [PUT] https://automationexercise.com/api/updateAccount
+10:14:43  10:14:43 [INFO] api.base_api:   Data: {'name': 'Edward', 'email': 'test_1792134883182_9956@example.com', 'password': '*p58TYw$@4*W', 'title': 'Mrs', 'birth_date': '13', 'birth_month': '6', 'birth_year': '1983', 'firstname': 'Brittany', 'lastname': 'Stewart', 'company': 'Williams, Benson and Cunningham', 'address1': '82763 Courtney Plains', 'address2': 'Apt. 644', 'country': 'India', 'zipcode': '92010', 'state': 'California', 'city': 'New Carriestad', 'mobile_number': '001-981-251-2840x610'}
+10:14:43  10:14:43 [INFO] api.base_api:   Response: 200
+10:14:43  PASSED                                                                   [ 75%]
+10:14:43  tests/api/test_users.py::TestDeleteAccount::test_delete_account_valid
+10:14:43  -------------------------------- live log call --------------------------------
+10:14:43  10:14:43 [INFO] api.base_api: [POST] https://automationexercise.com/api/createAccount
+10:14:43  10:14:43 [INFO] api.base_api:   Data: {'name': 'Kimberly', 'email': 'test_1792134883434_5226@example.com', 'password': '!7Rg+XbvC2EQ', 'title': 'Mrs', 'birth_date': '4', 'birth_month': '9', 'birth_year': '1991', 'firstname': 'Alexa', 'lastname': 'Nash', 'company': 'Graham Group', 'address1': '453 Alec Village', 'address2': 'Apt. 208', 'country': 'India', 'zipcode': '95997', 'state': 'Illinois', 'city': 'Joshuaview', 'mobile_number': '275.984.2121x469'}
+10:14:43  10:14:43 [INFO] api.base_api:   Response: 200
+10:14:43  10:14:43 [INFO] api.base_api: [DELETE] https://automationexercise.com/api/deleteAccount
+10:14:43  10:14:43 [INFO] api.base_api:   Data: {'email': 'test_1792134883434_5226@example.com', 'password': '!7Rg+XbvC2EQ'}
+10:14:44  10:14:43 [INFO] api.base_api:   Response: 200
+10:14:44  10:14:43 [INFO] api.base_api: [GET] https://automationexercise.com/api/getUserDetailByEmail
+10:14:44  10:14:43 [INFO] api.base_api:   Params: {'email': 'test_1792134883434_5226@example.com'}
+10:14:44  10:14:44 [INFO] api.base_api:   Response: 200
+10:14:44  PASSED                                                                   [ 78%]
+10:14:44  tests/api/test_users.py::TestDeleteAccount::test_delete_account_missing_field[email]
+10:14:44  -------------------------------- live log call --------------------------------
+10:14:44  10:14:44 [INFO] api.base_api: [DELETE] https://automationexercise.com/api/deleteAccount
+10:14:44  10:14:44 [INFO] api.base_api:   Data: {'name': 'Christopher', 'password': ')#n4AtOioaP&', 'title': 'Mrs', 'birth_date': '21', 'birth_month': '2', 'birth_year': '1983', 'firstname': 'John', 'lastname': 'Garrison', 'company': 'King Ltd', 'address1': '7120 May Knolls', 'address2': 'Suite 191', 'country': 'India', 'zipcode': '81713', 'state': 'West Virginia', 'city': 'Harrisshire', 'mobile_number': '001-329-721-3223x96360'}
+10:14:44  10:14:44 [INFO] api.base_api:   Response: 200
+10:14:44  PASSED                                                                   [ 82%]
+10:14:44  tests/api/test_users.py::TestDeleteAccount::test_delete_account_missing_field[password]
+10:14:44  -------------------------------- live log call --------------------------------
+10:14:44  10:14:44 [INFO] api.base_api: [DELETE] https://automationexercise.com/api/deleteAccount
+10:14:44  10:14:44 [INFO] api.base_api:   Data: {'name': 'Jacqueline', 'email': 'test_1792134884429_3336@example.com', 'title': 'Mrs', 'birth_date': '11', 'birth_month': '12', 'birth_year': '1998', 'firstname': 'Jack', 'lastname': 'Moreno', 'company': 'Hayes, Cook and Green', 'address1': '134 Hawkins Rue', 'address2': 'Suite 917', 'country': 'India', 'zipcode': '22712', 'state': 'Oklahoma', 'city': 'Mooreton', 'mobile_number': '854-938-3402'}
+10:14:44  10:14:44 [INFO] api.base_api:   Response: 200
+10:14:44  PASSED                                                                   [ 85%]
+10:14:44  tests/api/test_users.py::TestDeleteAccount::test_delete_account_nonexistent
+10:14:44  -------------------------------- live log call --------------------------------
+10:14:44  10:14:44 [INFO] api.base_api: [DELETE] https://automationexercise.com/api/deleteAccount
+10:14:44  10:14:44 [INFO] api.base_api:   Data: {'email': 'test_1792134884674_5981@example.com', 'password': 'vr6J)U2bm%nG'}
+10:14:44  10:14:44 [INFO] api.base_api:   Response: 200
+10:14:44  PASSED                                                                   [ 89%]
+10:14:44  tests/api/test_users.py::TestGetUserByEmail::test_get_user_by_email_valid
+10:14:44  ------------------------------- live log setup --------------------------------
+10:14:44  10:14:44 [INFO] api.base_api: [POST] https://automationexercise.com/api/createAccount
+10:14:44  10:14:44 [INFO] api.base_api:   Data: {'name': 'Stephanie', 'email': 'test_1792134884919_7822@example.com', 'password': '#DFlJRjqgc0W', 'title': 'Mr', 'birth_date': '7', 'birth_month': '2', 'birth_year': '1992', 'firstname': 'Tammy', 'lastname': 'Mcdonald', 'company': 'Sims-Santiago', 'address1': '3156 Robinson Valley Suite 289', 'address2': 'Apt. 090', 'country': 'India', 'zipcode': '21311', 'state': 'Idaho', 'city': 'North Amyfurt', 'mobile_number': '916-316-6153'}
+10:14:45  10:14:45 [INFO] api.base_api:   Response: 200
+10:14:45  -------------------------------- live log call --------------------------------
+10:14:45  10:14:45 [INFO] api.base_api: [GET] https://automationexercise.com/api/getUserDetailByEmail
+10:14:45  10:14:45 [INFO] api.base_api:   Params: {'email': 'test_1792134884919_7822@example.com'}
+10:14:45  10:14:45 [INFO] api.base_api:   Response: 200
+10:14:45  PASSED                                                                   [ 92%]
+10:14:45  ------------------------------ live log teardown ------------------------------
+10:14:45  10:14:45 [INFO] api.base_api: [DELETE] https://automationexercise.com/api/deleteAccount
+10:14:45  10:14:45 [INFO] api.base_api:   Data: {'email': 'test_1792134884919_7822@example.com', 'password': '#DFlJRjqgc0W'}
+10:14:46  10:14:45 [INFO] api.base_api:   Response: 200
+10:14:46
+10:14:46  tests/api/test_users.py::TestGetUserByEmail::test_get_user_by_email_missing_param
+10:14:46  -------------------------------- live log call --------------------------------
+10:14:46  10:14:45 [INFO] api.base_api: [GET] https://automationexercise.com/api/getUserDetailByEmail
+10:14:46  10:14:46 [INFO] api.base_api:   Response: 200
+10:14:46  PASSED                                                                   [ 96%]
+10:14:46  tests/api/test_users.py::TestGetUserByEmail::test_get_user_by_email_nonexistent
+10:14:46  -------------------------------- live log call --------------------------------
+10:14:46  10:14:46 [INFO] api.base_api: [GET] https://automationexercise.com/api/getUserDetailByEmail
+10:14:46  10:14:46 [INFO] api.base_api:   Params: {'email': 'nonexistent_user_12345@example.com'}
+10:14:46  10:14:46 [INFO] api.base_api:   Response: 200
+10:14:46  PASSED                                                                   [100%]
+10:14:46
+10:14:46  - generated xml file: C:\Users\Homr\.jenkins\workspace\project_otus\results.xml -
+10:14:46  ===================== 28 passed, 16 deselected in 14.84s ======================
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy)
+Stage "Deploy" skipped due to when conditional
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] junit
+10:14:47  Recording test results
+10:14:47  [Checks API] No suitable checks publisher found.
+[Pipeline] allure
+10:14:47  [Allure] No installation selected, using the only available: allure
+10:14:47  [Allure] Using cached Allure 3.16.0 with Node.js 24.14.1 at C:\Users\Homr\.jenkins\tools\org.allurereport.jenkins.tools.AllureCommandlineInstallation\allure\releases\allure-3.16.0-node-24.14.1-runtime-1
+10:14:47  Using Allure CLI 3.16.0 from installation 'allure'
+10:14:47  Cleaning existing Allure report directory: C:\Users\Homr\.jenkins\workspace\project_otus\allure-report
+10:14:47  Using Allure CLI: C:\Users\Homr\.jenkins\tools\org.allurereport.jenkins.tools.AllureCommandlineInstallation\allure\releases\allure-3.16.0-node-24.14.1-runtime-1\node-v24.14.1-win-x64\node.exe C:\Users\Homr\.jenkins\tools\org.allurereport.jenkins.tools.AllureCommandlineInstallation\allure\releases\allure-3.16.0-node-24.14.1-runtime-1\allure\node_modules\allure\cli.js
+10:14:47  [project_otus] $ C:\Users\Homr\.jenkins\tools\org.allurereport.jenkins.tools.AllureCommandlineInstallation\allure\releases\allure-3.16.0-node-24.14.1-runtime-1\node-v24.14.1-win-x64\node.exe C:\Users\Homr\.jenkins\tools\org.allurereport.jenkins.tools.AllureCommandlineInstallation\allure\releases\allure-3.16.0-node-24.14.1-runtime-1\allure\node_modules\allure\cli.js generate C:\Users\Homr\.jenkins\workspace\project_otus\allure-results -o C:\Users\Homr\.jenkins\workspace\project_otus\allure-report
+10:14:51  Allure report was successfully generated.
+10:14:53  Archiving Allure report via ArtifactManager…
+10:14:53  Allure artifact archived via ArtifactManager.
+[Pipeline] archiveArtifacts
+10:14:53  Archiving artifacts
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // timestamps
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

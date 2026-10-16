@@ -53,6 +53,9 @@ project/
 │       └── test_screenshot_demo.py
 ├── utils/
 │   └── data_generator.py     # Генератор уникальных данных с Faker
+├── docs/                     # Доказательства работы CI
+│   ├── screenshots/          # Скриншоты Jenkins и Allure-отчётов
+│   └── builds/               # Логи билдов
 ├── conftest.py               # Фикстуры и хуки
 ├── pytest.ini                # Конфигурация pytest
 ├── requirements.txt          # Зависимости
@@ -159,6 +162,41 @@ allure serve allure-results
 3. Выбрать `TEST_SUITE` (например, `all`)
 4. **Собрать**
 5. После завершения — смотреть `Allure Report` в левом меню билда
+
+## Доказательства работы CI
+
+Все скриншоты и логи билдов лежат в папке `docs/`.
+
+### Скриншоты (`docs/screenshots/`)
+
+| Файл                                              | Что показывает |
+|---------------------------------------------------|----------------|
+| `01_dashboard.png`                                | Главная Jenkins со списком билдов и графиками |
+| `02_allure_tools.png`                             | Настройка Allure Commandline в Manage Jenkins → Tools |
+| `03_global_env.png`                               | Глобальные переменные окружения (Python, Java) |
+| `04_job_config.png`                               | Конфигурация job: Pipeline script from SCM, Git, URL, credentials |
+| `05_allure_all.png`                               | Allure-отчёт режима `all` — 43 passed |
+| `06_allure_api.png`                               | Allure-отчёт режима `api` — 28 passed |
+| `07_allure_ui.png`                                | Allure-отчёт режима `ui` — 15 passed |
+| `08_01_allure_demo.png` и `08_02_allure_demo.png` | Allure-отчёт режима `demo` — 1 failed + прикреплённый скриншот |
+
+### Логи билдов (`docs/builds/`)
+
+| Файл | Режим | Результат |
+|------|-------|-----------|
+| `build_all.txt` | `all` | ✅ `43 passed`, SUCCESS |
+| `build_api.txt` | `api` | ✅ `28 passed`, SUCCESS |
+| `build_ui.txt` | `ui` | ✅ `15 passed`, SUCCESS |
+| `build_demo_screenshot.txt` | `demo` | ❌ `1 failed`, FAILURE (намеренно) |
+
+### Сводная таблица прогонов
+
+| Режим | Тестов | Результат | Отчёт                                                               |
+|-------|--------|-----------|---------------------------------------------------------------------|
+| `all` | 43 | ✅ SUCCESS | [Allure](docs/screenshots/05_allure_all.png)                        |
+| `api` | 28 | ✅ SUCCESS | [Allure](docs/screenshots/06_allure_api.png)                        |
+| `ui` | 15 | ✅ SUCCESS | [Allure](docs/screenshots/07_allure_ui.png)                         |
+| `demo` | 1 | ❌ FAILURE (намеренно) | [Allure + скриншот падения](docs/screenshots/08_02_allure_demo.png) |
 
 ## Особенности реализации
 

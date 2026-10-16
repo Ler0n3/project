@@ -1,0 +1,234 @@
+Started by user Гончаренко Валерия Алексеевна
+
+Obtained Jenkinsfile from git https://github.com/Ler0n3/project
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins
+ in C:\Users\Homr\.jenkins\workspace\project_otus
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential github-creds
+ > git.exe rev-parse --resolve-git-dir C:\Users\Homr\.jenkins\workspace\project_otus\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url https://github.com/Ler0n3/project # timeout=10
+Fetching upstream changes from https://github.com/Ler0n3/project
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.45.1.windows.1'
+using GIT_ASKPASS to set credentials GitHub access for OTUS project
+ > git.exe fetch --tags --force --progress -- https://github.com/Ler0n3/project +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/main^{commit}" # timeout=10
+Checking out Revision 5c73d66f673b1d8df92b5c45570775d3bcf4d5e3 (refs/remotes/origin/main)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f 5c73d66f673b1d8df92b5c45570775d3bcf4d5e3 # timeout=10
+Commit message: "Добавлен README.md с описанием проекта и CI""
+ > git.exe rev-list --no-walk 5c73d66f673b1d8df92b5c45570775d3bcf4d5e3 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] timeout
+Timeout set to expire in 1 час 0 минут
+[Pipeline] {
+[Pipeline] timestamps
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Setup)
+[Pipeline] bat
+10:20:59
+10:20:59  C:\Users\Homr\.jenkins\workspace\project_otus>python -m venv venv
+10:21:06
+10:21:06  C:\Users\Homr\.jenkins\workspace\project_otus>call venv\Scripts\activate.bat
+10:21:09  Requirement already satisfied: allure-pytest==2.16.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 1)) (2.16.2)
+10:21:09  Requirement already satisfied: allure-python-commons==2.16.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 2)) (2.16.2)
+10:21:09  Requirement already satisfied: attrs==26.1.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 3)) (26.1.0)
+10:21:09  Requirement already satisfied: certifi==2026.7.22 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 4)) (2026.7.22)
+10:21:09  Requirement already satisfied: cffi==2.1.1 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 5)) (2.1.1)
+10:21:09  Requirement already satisfied: charset-normalizer==3.5.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 6)) (3.5.2)
+10:21:09  Requirement already satisfied: colorama==0.4.6 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 7)) (0.4.6)
+10:21:09  Requirement already satisfied: Faker==40.40.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 8)) (40.40.0)
+10:21:09  Requirement already satisfied: h11==0.16.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 9)) (0.16.0)
+10:21:09  Requirement already satisfied: idna==3.20 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 10)) (3.20)
+10:21:09  Requirement already satisfied: iniconfig==2.3.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 11)) (2.3.0)
+10:21:09  Requirement already satisfied: outcome==1.3.0.post0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 12)) (1.3.0.post0)
+10:21:09  Requirement already satisfied: packaging==26.3 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 13)) (26.3)
+10:21:09  Requirement already satisfied: pluggy==1.6.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 14)) (1.6.0)
+10:21:09  Requirement already satisfied: pycparser==3.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 15)) (3.0)
+10:21:09  Requirement already satisfied: Pygments==2.21.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 16)) (2.21.0)
+10:21:09  Requirement already satisfied: PySocks==1.7.1 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 17)) (1.7.1)
+10:21:09  Requirement already satisfied: pytest==9.1.1 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 18)) (9.1.1)
+10:21:09  Requirement already satisfied: python-dotenv==1.2.4 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 19)) (1.2.4)
+10:21:09  Requirement already satisfied: requests==2.34.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 20)) (2.34.2)
+10:21:09  Requirement already satisfied: selenium==4.50.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 21)) (4.50.0)
+10:21:09  Requirement already satisfied: sniffio==1.3.1 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 22)) (1.3.1)
+10:21:09  Requirement already satisfied: sortedcontainers==2.4.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 23)) (2.4.0)
+10:21:09  Requirement already satisfied: trio==0.34.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 24)) (0.34.0)
+10:21:09  Requirement already satisfied: trio-websocket==0.12.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 25)) (0.12.2)
+10:21:09  Requirement already satisfied: typing_extensions==4.16.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 26)) (4.16.0)
+10:21:09  Requirement already satisfied: tzdata==2026.4 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 27)) (2026.4)
+10:21:09  Requirement already satisfied: urllib3==2.8.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 28)) (2.8.0)
+10:21:09  Requirement already satisfied: webdriver-manager==4.1.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 29)) (4.1.2)
+10:21:09  Requirement already satisfied: websocket-client==1.9.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 30)) (1.9.2)
+10:21:09  Requirement already satisfied: wsproto==1.3.2 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 31)) (1.3.2)
+10:21:09  Requirement already satisfied: flake8 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from -r requirements.txt (line 32)) (7.4.1)
+10:21:09  Requirement already satisfied: mccabe<0.8.0,>=0.7.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from flake8->-r requirements.txt (line 32)) (0.7.0)
+10:21:09  Requirement already satisfied: pycodestyle<2.16.0,>=2.15.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from flake8->-r requirements.txt (line 32)) (2.15.0)
+10:21:09  Requirement already satisfied: pyflakes<4.1.0,>=4.0.0 in c:\users\homr\.jenkins\workspace\project_otus\venv\lib\site-packages (from flake8->-r requirements.txt (line 32)) (4.0.3)
+10:21:09
+10:21:09  [notice] A new release of pip is available: 25.2 -> 26.2.1
+10:21:09  [notice] To update, run: python.exe -m pip install --upgrade pip
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Lint)
+[Pipeline] bat
+10:21:10
+10:21:10  C:\Users\Homr\.jenkins\workspace\project_otus>call venv\Scripts\activate.bat
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] bat
+10:21:12
+10:21:12  C:\Users\Homr\.jenkins\workspace\project_otus>call venv\Scripts\activate.bat
+10:21:15  ============================= test session starts =============================
+10:21:15  platform win32 -- Python 3.13.7, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\Homr\.jenkins\workspace\project_otus\venv\Scripts\python.exe
+10:21:15  cachedir: .pytest_cache
+10:21:15  rootdir: C:\Users\Homr\.jenkins\workspace\project_otus
+10:21:15  configfile: pytest.ini
+10:21:15  plugins: allure-pytest-2.16.2, Faker-40.40.0
+10:21:15  collecting ... collected 44 items / 29 deselected / 15 selected
+10:21:15
+10:21:15  tests/ui/test_cart.py::TestCart::test_add_product_to_cart
+10:21:15  ------------------------------- live log setup --------------------------------
+10:21:15  10:21:15 [INFO] WDM: ====== WebDriver manager ======
+10:21:17  10:21:17 [INFO] WDM: Driver [C:\Users\Homr\.wdm\drivers\chromedriver\win64\155.0.8059.84\chromedriver-win64/chromedriver.exe] found in cache by browser version
+10:22:04  PASSED                                                                   [  6%]
+10:22:04  tests/ui/test_cart.py::TestCart::test_remove_product_from_cart
+10:22:04  ------------------------------- live log setup --------------------------------
+10:22:04  10:22:01 [INFO] WDM: ====== WebDriver manager ======
+10:22:04  10:22:03 [INFO] WDM: Driver [C:\Users\Homr\.wdm\drivers\chromedriver\win64\155.0.8059.84\chromedriver-win64/chromedriver.exe] found in cache by browser version
+10:23:00  PASSED                                                                   [ 13%]
+10:23:00  tests/ui/test_cart.py::TestCart::test_open_cart_from_header
+10:23:00  ------------------------------- live log setup --------------------------------
+10:23:00  10:22:58 [INFO] WDM: ====== WebDriver manager ======
+10:23:00  10:22:59 [INFO] WDM: Driver [C:\Users\Homr\.wdm\drivers\chromedriver\win64\155.0.8059.84\chromedriver-win64/chromedriver.exe] found in cache by browser version
+10:23:22  PASSED                                                                   [ 20%]
+10:23:22  tests/ui/test_home_page.py::TestHomePage::test_home_page_loads
+10:23:22  ------------------------------- live log setup --------------------------------
+10:23:22  10:23:22 [INFO] WDM: ====== WebDriver manager ======
+10:23:23  10:23:23 [INFO] WDM: Driver [C:\Users\Homr\.wdm\drivers\chromedriver\win64\155.0.8059.84\chromedriver-win64/chromedriver.exe] found in cache by browser version
+10:23:34  PASSED                                                                   [ 26%]
+10:23:34  tests/ui/test_home_page.py::TestHomePage::test_home_page_features
+10:23:34  ------------------------------- live log setup --------------------------------
+10:23:34  10:23:33 [INFO] WDM: ====== WebDriver manager ======
+10:23:35  10:23:35 [INFO] WDM: Driver [C:\Users\Homr\.wdm\drivers\chromedriver\win64\155.0.8059.84\chromedriver-win64/chromedriver.exe] found in cache by browser version
+10:23:46  PASSED                                                                   [ 33%]
+10:23:46  tests/ui/test_home_page.py::TestHomePage::test_newsletter_subscription
+10:23:46  ------------------------------- live log setup --------------------------------
+10:23:46  10:23:46 [INFO] WDM: ====== WebDriver manager ======
+10:23:47  10:23:47 [INFO] WDM: Driver [C:\Users\Homr\.wdm\drivers\chromedriver\win64\155.0.8059.84\chromedriver-win64/chromedriver.exe] found in cache by browser version
+10:24:20  PASSED                                                                   [ 40%]
+10:24:20  tests/ui/test_login.py::TestLogin::test_login_valid
+10:24:20  ------------------------------- live log setup --------------------------------
+10:24:20  10:24:19 [INFO] WDM: ====== WebDriver manager ======
+10:24:20  10:24:20 [INFO] WDM: Driver [C:\Users\Homr\.wdm\drivers\chromedriver\win64\155.0.8059.84\chromedriver-win64/chromedriver.exe] found in cache by browser version
+10:24:22  -------------------------------- live log call --------------------------------
+10:24:22  10:24:22 [INFO] api.base_api: [POST] https://automationexercise.com/api/createAccount
+10:24:22  10:24:22 [INFO] api.base_api:   Data: {'name': 'Carlos', 'email': 'test_1792135462524_8291@example.com', 'password': 'z&)69NtU*A3R', 'title': 'Mrs', 'birth_date': '1', 'birth_month': '8', 'birth_year': '1995', 'firstname': 'Holly', 'lastname': 'Brooks', 'company': 'Mata-Gonzalez', 'address1': '4965 Melinda Drive', 'address2': 'Apt. 147', 'country': 'India', 'zipcode': '57791', 'state': 'Nebraska', 'city': 'Port Kristinshire', 'mobile_number': '588.291.7699x8768'}
+10:24:24  10:24:24 [INFO] api.base_api:   Response: 200
+10:24:56  10:24:56 [INFO] api.base_api: [DELETE] https://automationexercise.com/api/deleteAccount
+10:24:56  10:24:56 [INFO] api.base_api:   Data: {'email': 'test_1792135462524_8291@example.com', 'password': 'z&)69NtU*A3R'}
+10:24:57  10:24:57 [INFO] api.base_api:   Response: 200
+10:25:00  PASSED                                                                   [ 46%]
+10:25:00  tests/ui/test_login.py::TestLogin::test_login_wrong_password
+10:25:00  ------------------------------- live log setup --------------------------------
+10:25:00  10:25:00 [INFO] WDM: ====== WebDriver manager ======
+10:25:01  10:25:01 [INFO] WDM: Driver [C:\Users\Homr\.wdm\drivers\chromedriver\win64\155.0.8059.84\chromedriver-win64/chromedriver.exe] found in cache by browser version
+10:25:40  PASSED                                                                   [ 53%]
+10:25:40  tests/ui/test_login.py::TestLogin::test_login_wrong_email
+10:25:40  ------------------------------- live log setup --------------------------------
+10:25:40  10:25:38 [INFO] WDM: ====== WebDriver manager ======
+10:25:40  10:25:40 [INFO] WDM: Driver [C:\Users\Homr\.wdm\drivers\chromedriver\win64\155.0.8059.84\chromedriver-win64/chromedriver.exe] found in cache by browser version
+10:26:21  PASSED                                                                   [ 60%]
+10:26:21  tests/ui/test_products.py::TestProducts::test_open_products_page
+10:26:21  ------------------------------- live log setup --------------------------------
+10:26:21  10:26:21 [INFO] WDM: ====== WebDriver manager ======
+10:26:23  10:26:23 [INFO] WDM: Driver [C:\Users\Homr\.wdm\drivers\chromedriver\win64\155.0.8059.84\chromedriver-win64/chromedriver.exe] found in cache by browser version
+10:26:50  PASSED                                                                   [ 66%]
+10:26:50  tests/ui/test_products.py::TestProducts::test_open_product_detail
+10:26:50  ------------------------------- live log setup --------------------------------
+10:26:50  10:26:48 [INFO] WDM: ====== WebDriver manager ======
+10:26:50  10:26:50 [INFO] WDM: Driver [C:\Users\Homr\.wdm\drivers\chromedriver\win64\155.0.8059.84\chromedriver-win64/chromedriver.exe] found in cache by browser version
+10:27:14  PASSED                                                                   [ 73%]
+10:27:14  tests/ui/test_products.py::TestProducts::test_search_various_products[T-Shirt]
+10:27:14  ------------------------------- live log setup --------------------------------
+10:27:14  10:27:13 [INFO] WDM: ====== WebDriver manager ======
+10:27:15  10:27:15 [INFO] WDM: Driver [C:\Users\Homr\.wdm\drivers\chromedriver\win64\155.0.8059.84\chromedriver-win64/chromedriver.exe] found in cache by browser version
+10:27:49  PASSED                                                                   [ 80%]
+10:27:49  tests/ui/test_products.py::TestProducts::test_search_various_products[Jeans]
+10:27:49  ------------------------------- live log setup --------------------------------
+10:27:49  10:27:49 [INFO] WDM: ====== WebDriver manager ======
+10:27:50  10:27:50 [INFO] WDM: Driver [C:\Users\Homr\.wdm\drivers\chromedriver\win64\155.0.8059.84\chromedriver-win64/chromedriver.exe] found in cache by browser version
+10:28:23  PASSED                                                                   [ 86%]
+10:28:23  tests/ui/test_products.py::TestProducts::test_search_various_products[Dress]
+10:28:23  ------------------------------- live log setup --------------------------------
+10:28:23  10:28:22 [INFO] WDM: ====== WebDriver manager ======
+10:28:24  10:28:24 [INFO] WDM: Driver [C:\Users\Homr\.wdm\drivers\chromedriver\win64\155.0.8059.84\chromedriver-win64/chromedriver.exe] found in cache by browser version
+10:28:58  PASSED                                                                   [ 93%]
+10:28:58  tests/ui/test_products.py::TestProducts::test_search_various_products[Top]
+10:28:58  ------------------------------- live log setup --------------------------------
+10:28:58  10:28:57 [INFO] WDM: ====== WebDriver manager ======
+10:28:59  10:28:59 [INFO] WDM: Driver [C:\Users\Homr\.wdm\drivers\chromedriver\win64\155.0.8059.84\chromedriver-win64/chromedriver.exe] found in cache by browser version
+10:29:33  PASSED                                                                   [100%]
+10:29:33
+10:29:33  - generated xml file: C:\Users\Homr\.jenkins\workspace\project_otus\results.xml -
+10:29:33  ================ 15 passed, 29 deselected in 498.28s (0:08:18) ================
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy)
+Stage "Deploy" skipped due to when conditional
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] junit
+10:29:34  Recording test results
+10:29:34  [Checks API] No suitable checks publisher found.
+[Pipeline] allure
+10:29:34  [Allure] No installation selected, using the only available: allure
+10:29:34  [Allure] Using cached Allure 3.16.0 with Node.js 24.14.1 at C:\Users\Homr\.jenkins\tools\org.allurereport.jenkins.tools.AllureCommandlineInstallation\allure\releases\allure-3.16.0-node-24.14.1-runtime-1
+10:29:34  Using Allure CLI 3.16.0 from installation 'allure'
+10:29:34  Cleaning existing Allure report directory: C:\Users\Homr\.jenkins\workspace\project_otus\allure-report
+10:29:35  Using Allure CLI: C:\Users\Homr\.jenkins\tools\org.allurereport.jenkins.tools.AllureCommandlineInstallation\allure\releases\allure-3.16.0-node-24.14.1-runtime-1\node-v24.14.1-win-x64\node.exe C:\Users\Homr\.jenkins\tools\org.allurereport.jenkins.tools.AllureCommandlineInstallation\allure\releases\allure-3.16.0-node-24.14.1-runtime-1\allure\node_modules\allure\cli.js
+10:29:35  [project_otus] $ C:\Users\Homr\.jenkins\tools\org.allurereport.jenkins.tools.AllureCommandlineInstallation\allure\releases\allure-3.16.0-node-24.14.1-runtime-1\node-v24.14.1-win-x64\node.exe C:\Users\Homr\.jenkins\tools\org.allurereport.jenkins.tools.AllureCommandlineInstallation\allure\releases\allure-3.16.0-node-24.14.1-runtime-1\allure\node_modules\allure\cli.js generate C:\Users\Homr\.jenkins\workspace\project_otus\allure-results -o C:\Users\Homr\.jenkins\workspace\project_otus\allure-report
+10:29:39  Allure report was successfully generated.
+10:29:41  Archiving Allure report via ArtifactManager…
+10:29:41  Allure artifact archived via ArtifactManager.
+[Pipeline] archiveArtifacts
+10:29:41  Archiving artifacts
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // timestamps
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
